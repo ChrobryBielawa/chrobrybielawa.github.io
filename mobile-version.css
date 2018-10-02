@@ -1,0 +1,237 @@
+:root{
+    
+}
+body{
+    font-family: 'Lato', sans-serif;
+}
+@keyframes toggle{
+    from{
+        margin-left:-101%;
+    }to{
+        margin-left:0%;
+    }
+}
+.toggle-element{
+    margin-left:0px !important;
+    animation-name: toggle;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+.page-body, html{
+    margin:0;
+    padding:0;
+}
+.page-nav{
+    width:100%;
+    height:50px;
+    position:fixed;
+    background-color:#303984;
+    top:0;
+    left:0;
+}
+.btn{
+    width: 40px;
+    height: 20px;
+    border: 0;
+    border-top: 5px solid #ffffff;
+    background: transparent;
+    position: relative;
+    transition: 0.3s transform linear;
+    margin:15px;
+}
+
+.btn::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-top: 5px solid #ffffff;
+  transform: translateY(10px);
+}
+.web-logo{
+    width:35px;
+    height:35px;
+    margin:0;
+    position:absolute;
+    right:20px;
+    top:8px;
+}
+.heading-nav-logo{
+    width:100%;
+    height:100%;
+}
+.page-aside{
+    width:100%;
+    position:fixed;
+    top:50px;
+    height:100%;
+    border-top:2px solid #ffffff;
+    z-index: 999;
+    margin-left:-101%;
+}
+.z{
+    width:100%;
+    height:100%;
+    z-index: -999;
+    position:absolute;
+    top:0;
+    left:0;
+    background-color: #1f2660;
+    background-blend-mode: screen;
+    background-image: url(img/chrobry.jpg);
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(60%) blur(3px);
+}
+.overflow-lock{
+    overflow:hidden;
+}
+.logo{
+    margin-top:30px;
+}
+.aside-nav{
+    position:absolute;
+    width:80%;
+    left:50%;
+    transform:translateX(-50%);
+}
+.logo figure{
+    width:80px;
+    height:80px;
+    margin:auto;
+    margin-top:30px;
+}
+.aside-logo{
+    width:100%;
+    height:100%;
+}
+.website-title{
+}
+.title-text{
+    text-align:center;
+    font-size:23px;
+    color:#ffffff;
+}
+.ol-list{
+    padding:0;
+    margin:0;
+}
+.centering{
+    display:flex;
+    justify-content: center;
+}
+.next, .previous{
+    margin:20px;
+    width:40px;
+    height:40px;
+    border:0;
+    border-top:5px solid #ffffff;
+    border-left:5px solid #ffffff;
+    background:transparent;
+    position:relative;
+    float:left;
+    cursor:pointer;
+}
+.next{
+    transform:rotate(135deg);
+}
+.previous{
+    transform:rotate(-45deg);
+}
+.list{
+    list-style: none;
+    text-align:left;
+}
+a{
+    text-decoration: none;
+    color:#ffffff;
+    text-shadow: 
+        4px 3px 10px #000000;
+}
+.color{
+    color:#ffffff;
+    
+}
+.heading-title{
+    margin-top:20px;
+    font-size:18px;
+    color:#ffffff;
+    text-align:center;
+    text-shadow: 
+        3px 3px 10px #000000;
+}
+.school-name{
+    text-align:center;
+    color:#ffffff;
+    text-shadow: 
+        5px 5px 10px #000000;
+}
+.page-header{
+    margin-top:50px;
+    width:100%;
+}
+.num-pages{
+    color:#ffffff;
+    font-size:18px;
+    display:flex;
+    align-items: center;
+}
+.banner img{
+    width:100%;
+}
+.banner figure{
+    border-top:2px solid #ffffff;
+    margin:0;
+    padding:0;
+}
+.heading-graphic2, .heading-graphic1{
+    display:none;
+}
+.rightSideText{
+    float:right;
+}
+.heading-main{
+    width:100%;
+    background-color:#303984;
+    color:#ffffff;
+    text-align:center;
+    padding:10px;
+    box-sizing: border-box;
+}
+.web-article{
+    border-bottom:2px solid #303984;
+}
+.article-title{
+    margin:0;
+    color:#303984;
+    font-size:28px;
+    border-bottom:2px solid #303984;
+    padding:10px;
+    text-align:center;
+}
+.content{
+    text-align:justify;
+    padding:20px;
+    font-size:22px;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+.date{
+    padding-right:10px;
+    text-align:right;
+    clear:both;
+}
+.page-footer{
+    width:100%;
+    background-color:#303984;
+    color:#ffffff;
+    margin:0;
+    padding:0;
+}
+.desc{
+    margin:0;
+    padding:10px;
+    text-align:center;
+}

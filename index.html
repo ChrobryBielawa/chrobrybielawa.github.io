@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="PL-pl">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>
+            Blog szkolny
+        </title>
+	    <link href='https://fonts.googleapis.com/css?family=Lato|Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="mobile-version.css">
+        <link rel="stylesheet" href="desktop-version.css">
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    </head>
+    <body class="page-body">
+       <nav class="page-nav">
+            <button class="btn"></button>
+            <div class="web-logo">
+                <img src="img/chrobry.png" alt="" class="heading-nav-logo">
+            </div>
+       </nav>
+        <aside class="page-aside">
+            <div class="logo">
+                <figcaption>
+                    <figure class="">
+                        <img src="img/chrobry.png" alt="" class="aside-logo">
+                    </figure>
+                    <h1 class="school-name">
+                        Liceum Ogólnokształcące 
+                            <br>
+                        im. Bolesława Chrobrego
+                    </h1>
+                    <h1 class="school-name">
+                        Gimnazjum nr 5
+                    </h1>
+                </figcaption>
+            </div>
+            <nav class="aside-nav">
+                <h1 class="heading-title">
+                    Blog szkolny
+                        <br>
+                    Spis artykułów 
+                </h1>
+                <ol class="ol-list">
+                </ol>
+                <div class="centering">
+                    <button class="previous"></button>
+                        <span class="num-pages">
+                            1
+                        </span>
+                    <button class="next"></button>
+                </div>
+            </nav>
+            <div class="z"></div>
+        </aside>
+        <header class="page-header">
+            <div class="banner">
+                <figure class="heading-graphic1">
+                    <img src="img/header1.png" alt="">
+                </figure>
+                <figure class="heading-graphic2">
+                    <img src="img/header2.png" alt="">
+                </figure>
+                <figure class="heading-graphic3">
+                    <img src="img/header3.png" alt="">
+                </figure>
+            </div>
+        </header>
+        <main class="page-main">
+            <section class="main-section">
+               <h2 class="heading-main">
+                  Artykuły 
+               </h2>
+            </section>
+        </main>
+        <footer class="page-footer">
+            <p class="desc">
+                ZSO BIELAWA &copy; 2018
+                    <br>
+                Autor strony: 
+                    <a href="https://oskarskalski.github.io" target="_blank">
+                        Oskar Skalski
+                    </a>
+            </p>
+        </footer>
+            <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+            <script>
+              // Initialize Firebase
+              var config = {
+                apiKey: "AIzaSyD2eIF09nasRHCo3A9bj1X8u9X41YIN6ck",
+                authDomain: "blog-a94ef.firebaseapp.com",
+                databaseURL: "https://blog-a94ef.firebaseio.com",
+                projectId: "blog-a94ef",
+                storageBucket: "blog-a94ef.appspot.com",
+                messagingSenderId: "888207919230"
+              };
+              firebase.initializeApp(config);
+              database  = firebase.database();
+        </script>
+        <script src="apps.js"></script>
+    </body>
+</html>
