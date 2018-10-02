@@ -12,10 +12,7 @@ body{
     }
 }
 .toggle-element{
-    margin-left:0px !important;
-    animation-name: toggle;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
+    margin-left:0 !important;
 }
 .page-body, html{
     margin:0;
@@ -36,7 +33,6 @@ body{
     border-top: 5px solid #ffffff;
     background: transparent;
     position: relative;
-    transition: 0.3s transform linear;
     margin:15px;
 }
 
