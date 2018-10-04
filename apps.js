@@ -158,6 +158,7 @@ var ref = database.ref('Posts');
                    const modal_content = document.createElement('p');
                    const close_modal = document.createElement('button');
                    const modal_footer = document.createElement('div');
+                   const pageNav = document.querySelector('.page-aside');
                   
                    modal_div.classList.add('modal-div');
                    modal_title.classList.add('article-title');
@@ -167,8 +168,8 @@ var ref = database.ref('Posts');
                    body.classList.add('overflow-lock');
                    close_modal.classList.add('close-btn');
                    modal_footer.classList.add('modal-footer');
+                   pageNav.classList.remove('toggle-element');
                    
-
                    body.appendChild(modal_div);
                    modal_div.appendChild(modal_article);
                    modal_div.appendChild(modal_title);
