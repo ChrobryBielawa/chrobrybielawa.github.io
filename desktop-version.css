@@ -3,6 +3,9 @@
         --marginRight: 25px;
         --MainelementsWidth: 70%;
     }
+    .modal-div > .content {
+        font-size:24px;
+    }
     .page-nav{
         display:none;
     }

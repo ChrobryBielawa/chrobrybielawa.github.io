@@ -170,8 +170,9 @@ body{
     margin:0;
 }
 .wrap{
-    display:flex;
-    justify-content: center;
+    display:none;
+   /* display:flex;
+    justify-content: center; */
 }
 .next, .previous{
     margin:20px;
@@ -260,7 +261,7 @@ a{
 }
 .article-title{
     margin:0;
-    color:#000000;
+    color:#303984;
     font-size:28px;
     border-bottom:2px solid #303984;
     padding:10px;
@@ -272,6 +273,7 @@ a{
     font-size:22px;
     margin-top:10px;
     margin-bottom:20px;
+    color:#303984;
 }
 .date{
     padding-right:10px;
