@@ -3,6 +3,7 @@
 }
 body{
     font-family: 'Lato', sans-serif;
+    height:100vh;
 }
 @keyframes toggle{
     from{
@@ -65,6 +66,7 @@ body{
     border-top:2px solid #ffffff;
     z-index: 999;
     margin-left:-101%;
+    background-color:#38429a;
 }
 .z{
     width:100%;

@@ -54,6 +54,16 @@
         border-left:2px solid #303984;
         border-right:2px solid #303984;
     }
+    .school-name{
+        font-size:20px;
+    }
+    .heading-title{
+        font-size:26px;
+        margin-top:60px;
+    }
+    .list a{
+        font-size:20px;
+    }
 }
 @media only screen and (min-width: 1400px){
     .heading-main{

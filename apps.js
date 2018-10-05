@@ -200,6 +200,7 @@ var ref = database.ref('Posts');
                         }, false);
                         
                     };
+                   
                    sierotki();
                    closed_modal();
                }, false);
