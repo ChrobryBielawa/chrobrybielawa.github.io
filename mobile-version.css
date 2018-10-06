@@ -3,7 +3,6 @@
 }
 body{
     font-family: 'Lato', sans-serif;
-    height:100vh;
 }
 @keyframes toggle{
     from{
@@ -64,7 +63,7 @@ body{
     top:50px;
     height:100%;
     border-top:2px solid #ffffff;
-    z-index: 999;
+    z-index: 99;
     margin-left:-101%;
     background-color:#38429a;
 }
@@ -105,7 +104,24 @@ body{
     width:100%;
     height:100%;
 }
-@keyframes zoomModal{
+.hide-modal{
+    animation: hideModal 0.5s;
+    animation-timing-function:ease-in-out;
+    margin-left:-100% !important;
+}
+@keyframes hideModal{
+    from{ 
+        margin-left:0%;
+    }to{   
+        margin-left:-100%;
+    }
+}
+.MarginReset{
+    animation: showModal 0.5s;
+    animation-timing-function:ease-in-out;
+    margin-left:0% !important;
+}
+@keyframes showModal{
     from{ 
         margin-left:-100%;
     }to{   
@@ -114,34 +130,49 @@ body{
 }
 .modal-div{
     position:fixed;
-    width:90%;
-    height:80%;
+    width:98%;
+    height:90%;
+    bottom:0;
     left:50%;
-    top:50%;
-    transform:translateX(-50%) translateY(-50%);
+    transform:translateX(-50%);
     background:#ffffff;
     z-index: 99999;
-    overflow-x:auto;
-    animation: zoomModal 0.5s;
-    animation-timing-function:ease-in-out;
+    overflow:hidden;
     border:4px solid #303984;
     overflow-x:hidden;
+    margin-left:-100%;
+}
+.closeModal{
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index: 9995;
+    cursor:pointer;
+}
+.modal{
+    position:absolute;
+    bottom:0;
+    left:0;
+    height:90%;
+    overflow-y:auto !important;
 }
 .modal-div > .content {
     font-size:18px;
 }
-.modal-div::-webkit-scrollbar {
-    width: 12px;
+.modal::-webkit-scrollbar {
+    width: 4px;
 }
-.modal-div::-webkit-scrollbar-track {
+.moda::-webkit-scrollbar-track {
     background:#c7c2c2;
 }
-.modal-div::-webkit-scrollbar-thumb {
+.modal::-webkit-scrollbar-thumb {
     background-color: #38429a;
 }
-.modal-footer{
-    float:right;
-    padding:10px;
+.close-modal{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
 }
 .close-btn{
     border:0;
@@ -158,9 +189,9 @@ body{
     left:0;
     right:0;
     bottom:0;
-    z-index: 10;
     background:rgba(0,0,0,0.6);
-    z-index: 99998;
+    z-index: 999;
+    height:100vh;
 }
 .title-text{
     text-align:center;

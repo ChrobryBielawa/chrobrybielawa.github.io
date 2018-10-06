@@ -152,30 +152,19 @@ var ref = database.ref('Posts');
             nodes.forEach(function(item) {
                item.addEventListener('click', function() {
                    const body = document.querySelector('body');
-                   const modal_div = document.createElement('div');
-                   const modal_article = document.createElement('article');
-                   const modal_title = document.createElement('h2');
-                   const modal_content = document.createElement('p');
-                   const close_modal = document.createElement('button');
-                   const modal_footer = document.createElement('div');
                    const pageNav = document.querySelector('.page-aside');
-                  
-                   modal_div.classList.add('modal-div');
-                   modal_title.classList.add('article-title');
-                   modal_content.classList.add('content');
-                   modal_article.classList.add('web-article');
+                   const modalDiv = document.querySelector('.modal-div');
+                   const modalText = document.querySelector('.modal-text');
+                   const modalTitle = document.querySelector('.modal-title');
+                   const CloseModal = document.createElement('div');
+                   
+                   CloseModal.classList.add('closeModal');
                    body.classList.add('modal-opened');
-                   body.classList.add('overflow-lock');
-                   close_modal.classList.add('close-btn');
-                   modal_footer.classList.add('modal-footer');
+                   body.classList.add('overflow-lock')
+                   modalDiv.classList.add('MarginReset');
                    pageNav.classList.remove('toggle-element');
                    
-                   body.appendChild(modal_div);
-                   modal_div.appendChild(modal_article);
-                   modal_div.appendChild(modal_title);
-                   modal_div.appendChild(modal_content);
-                   modal_div.appendChild(modal_footer);
-                   modal_footer.appendChild(close_modal);
+                   body.appendChild(CloseModal);
                    
                     var num = this.getAttribute('data-num');
                         if(num){
@@ -185,19 +174,34 @@ var ref = database.ref('Posts');
                            var date = Posts[k].date;
                            var author = Posts[k].author;
                             
-                           modal_title.innerHTML = title;
-                           modal_content.innerHTML = text + '<br><br>' + '<br><i class="rightSideText">' + date + ', ' + author + '</i>';
+                           modalTitle.innerHTML = title;
+                           modalText.innerHTML = text + '<br><br>' + '<br><i class="rightSideText">' + date + ', ' + author + '</i>';
 
                         }
                     const closed_modal = () =>{
                         const body = document.querySelector('body');
                         const closeBtn = document.querySelector('.close-btn');
+                        const openedModal = document.querySelector('.modal-opened');
+                        const Close_modal = document.querySelector('.closeModal');
+                        
                         closeBtn.innerHTML = '<i>Zamknij artykuł';
-                        closeBtn.addEventListener('click', function(){  
-                            body.removeChild(modal_div);
-                            body.classList.remove('overflow-lock');
+                        closeBtn.addEventListener('click', function(){
+                            modalDiv.classList.add('hide-modal');
                             body.classList.remove('modal-opened');
+                            body.classList.remove('overflow-lock')
+                            modalDiv.classList.remove('MarginReset');
+                            body.removeChild(Close_modal);
                         }, false);
+                        
+                        Close_modal.addEventListener('click', function(){
+                            modalDiv.classList.add('hide-modal');
+                            body.classList.remove('modal-opened');
+                            body.classList.remove('overflow-lock')
+                            modalDiv.classList.remove('MarginReset');
+                            body.removeChild(Close_modal);
+                        }, false);
+                        
+                        
                         
                     };
                    
@@ -242,10 +246,7 @@ var ref = database.ref('Posts');
       console.log('Error!');
       console.log(err);
   }       
-
-
-
-                          
+         
                           
                           
                           
