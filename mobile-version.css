@@ -173,14 +173,16 @@ body{
     left:0;
     top:0;
     width:100%;
+    border-bottom:2px solid red;
 }
 .close-btn{
     border:0;
-    background:transparent;
-    font-size:18px;
-    padding:10px;
+    background:#303984;
     cursor:pointer;
-    border-bottom:2px solid #303984;
+    float:right;
+    margin:0;
+    width:50px;
+    height:50px;
 }
 .modal-opened::after{
     content:'';
@@ -234,6 +236,7 @@ a{
     color:#ffffff;
     text-shadow: 
         4px 3px 10px #000000;
+    cursor:pointer;
 }
 .color{
     color:#ffffff;
@@ -275,7 +278,19 @@ a{
     display:none;
 }
 .rightSideText{
-    float:right;
+    text-align:right;
+    padding:20px;
+    font-size:22px;
+    margin-top:10px;
+    margin-bottom:20px;
+    color:#303984;
+}
+.ShowBtn{
+    padding:20px;
+    font-size:20px;
+    color:#303984;
+    font-style: italic;
+    cursor:pointer;
 }
 .heading-main{
     width:100%;

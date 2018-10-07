@@ -5,49 +5,130 @@ var ref = database.ref('Posts');
       var Posts = data.val();
       var keys = Object.keys(Posts);
       const section = document.querySelector('.main-section');
-     
-      console.log(keys);
-                    
-          for(var i = (keys.length-1); i>= 0; i--){
-              console.log(keys.length);
-              var k = keys[i];
+            const showData = () => {
+              console.log(keys);
 
-              var title = Posts[k].title;
-              var text = Posts[k].text;
-              var date = Posts[k].date;
-              var author = Posts[k].author;
+              for(var i = (keys.length-1); i>= 0; i--){
+                  console.log(keys.length);
+                  var k = keys[i];
 
-              const article = document.createElement('article');
-              const title_of_article = document.createElement('h2');
-              const content = document.createElement('p');
-              const date_added = document.createElement('p');
-              
-              title_of_article.classList.add('article-title');
-              content.classList.add('content');
-              article.classList.add('web-article');
-              date_added.classList.add('date');
-              
-              section.appendChild(article);
-              article.appendChild(title_of_article);
-              article.appendChild(date_added);
-              article.appendChild(content);
-              
-              title_of_article.innerHTML = title;
-              content.innerHTML = text + '<br><br>' + '<br><i class="rightSideText">' + date + ', ' + author + '</i>';
-              
-              const ol_list = document.querySelector('.ol-list');
-              const newLi = document.createElement('li');
-              const newA = document.createElement('a');
-              
-              newLi.classList.add('list');
-              newA.innerHTML = (i+1) + '. ' + title;
-              
-              newA.setAttribute('data-num', i);
-              
-              ol_list.appendChild(newLi);
-              newLi.appendChild(newA);
-              
-          }
+                  var title = Posts[k].title;
+                  var text = Posts[k].text;
+                  var date = Posts[k].date;
+                  var author = Posts[k].author;
+
+                  const article = document.createElement('article');
+                  const title_of_article = document.createElement('h2');
+                  const content = document.createElement('p');
+                  const date_added = document.createElement('p');
+                  const ShowBtn = document.createElement('span');
+                  const author_date = document.createElement('p');
+
+                  title_of_article.classList.add('article-title');
+                  content.classList.add('content');
+                  article.classList.add('web-article');
+                  date_added.classList.add('date');
+                  ShowBtn.classList.add('ShowBtn');
+                  author_date.classList.add('rightSideText');
+
+                  section.appendChild(article);
+                  article.appendChild(title_of_article);
+                  article.appendChild(date_added);
+                  article.appendChild(content);
+                  article.appendChild(ShowBtn);
+                  article.appendChild(author_date);
+
+                 
+                  title_of_article.innerHTML = title;
+                  content.innerHTML = text;
+                  ShowBtn.innerHTML = 'Czytaj dalej...';
+                  
+                  ShowBtn.setAttribute('data-num', i);
+                  
+                  author_date.innerHTML = '<i>' + date + ', ' + author + '</i>';
+                  
+                  const ol_list = document.querySelector('.ol-list');
+                  const newLi = document.createElement('li');
+                  const newA = document.createElement('a');
+                  
+                  newLi.classList.add('list');
+                  newA.innerHTML = (i+1) + '. ' + title;
+
+                  newA.setAttribute('data-num', i);
+                  content.setAttribute('data-num', i);
+
+                  ol_list.appendChild(newLi);
+                  newLi.appendChild(newA);
+                  
+
+              }
+              const eventDelegation = () =>{
+                  
+                var items = document.querySelectorAll('.ShowBtn, .list a');
+                var nodes = Array.prototype.slice.call(items);
+                nodes.forEach(function(item) {
+                   item.addEventListener('click', function() {
+                     
+                       const body = document.querySelector('body');
+                       const pageNav = document.querySelector('.page-aside');
+                       const modalDiv = document.querySelector('.modal-div');
+                       const modalText = document.querySelector('.modal-text');
+                       const modalTitle = document.querySelector('.modal-title');
+                       const CloseModal = document.createElement('div');
+
+                       CloseModal.classList.add('closeModal');
+                       body.classList.add('modal-opened');
+                       body.classList.add('overflow-lock')
+                       modalDiv.classList.add('MarginReset');
+                       pageNav.classList.remove('toggle-element');
+
+                       body.appendChild(CloseModal);
+
+                        var num = this.getAttribute('data-num');
+                            if(num){
+                               var k = keys[num];
+                               var title = Posts[k].title;
+                               var text = Posts[k].text;
+                               var Stext = Posts[k].Stext;
+                               var date = Posts[k].date;
+                               var author = Posts[k].author;
+
+                               modalTitle.innerHTML = title;
+                               modalText.innerHTML = text + '<br><br>' + Stext + '<br><br>' + '<br><i class="rightSideText">' + date + ', ' + author + '</i>';
+
+                            }
+                        const closed_modal = () =>{
+                            const body = document.querySelector('body');
+                            const closeBtn = document.querySelector('.close-btn');
+                            const openedModal = document.querySelector('.modal-opened');
+                            const Close_modal = document.querySelector('.closeModal');
+
+                            closeBtn.innerHTML = '<i>Zamknij artykuł';
+                            closeBtn.addEventListener('click', function(){
+                                modalDiv.classList.add('hide-modal');
+                                body.classList.remove('modal-opened');
+                                body.classList.remove('overflow-lock')
+                                modalDiv.classList.remove('MarginReset');
+                                Close_modal.remove();
+                            }, false);
+
+                            Close_modal.addEventListener('click', function(){
+                                modalDiv.classList.add('hide-modal');
+                                body.classList.remove('modal-opened');
+                                body.classList.remove('overflow-lock')
+                                modalDiv.classList.remove('MarginReset');
+                                Close_modal.remove();
+                            }, false);
+
+                        };
+
+                          sierotki();
+                           closed_modal();
+                       }, false);
+                    }); 
+                 };
+                eventDelegation(); 
+            };
         const postsPage = () => {
             const nextPosts = document.createElement('btn');
             const previousPosts = document.createElement('btn');
@@ -143,73 +224,6 @@ var ref = database.ref('Posts');
                 
             }, 100);     
         };
-     
-        
-        const eventDelegation = () =>{
-            var items = document.querySelectorAll('.list a');
-            var nodes = Array.prototype.slice.call(items);
-
-            nodes.forEach(function(item) {
-               item.addEventListener('click', function() {
-                   const body = document.querySelector('body');
-                   const pageNav = document.querySelector('.page-aside');
-                   const modalDiv = document.querySelector('.modal-div');
-                   const modalText = document.querySelector('.modal-text');
-                   const modalTitle = document.querySelector('.modal-title');
-                   const CloseModal = document.createElement('div');
-                   
-                   CloseModal.classList.add('closeModal');
-                   body.classList.add('modal-opened');
-                   body.classList.add('overflow-lock')
-                   modalDiv.classList.add('MarginReset');
-                   pageNav.classList.remove('toggle-element');
-                   
-                   body.appendChild(CloseModal);
-                   
-                    var num = this.getAttribute('data-num');
-                        if(num){
-                           var k = keys[num];
-                           var title = Posts[k].title;
-                           var text = Posts[k].text;
-                           var date = Posts[k].date;
-                           var author = Posts[k].author;
-                            
-                           modalTitle.innerHTML = title;
-                           modalText.innerHTML = text + '<br><br>' + '<br><i class="rightSideText">' + date + ', ' + author + '</i>';
-
-                        }
-                    const closed_modal = () =>{
-                        const body = document.querySelector('body');
-                        const closeBtn = document.querySelector('.close-btn');
-                        const openedModal = document.querySelector('.modal-opened');
-                        const Close_modal = document.querySelector('.closeModal');
-                        
-                        closeBtn.innerHTML = '<i>Zamknij artykuł';
-                        closeBtn.addEventListener('click', function(){
-                            modalDiv.classList.add('hide-modal');
-                            body.classList.remove('modal-opened');
-                            body.classList.remove('overflow-lock')
-                            modalDiv.classList.remove('MarginReset');
-                            body.removeChild(Close_modal);
-                        }, false);
-                        
-                        Close_modal.addEventListener('click', function(){
-                            modalDiv.classList.add('hide-modal');
-                            body.classList.remove('modal-opened');
-                            body.classList.remove('overflow-lock')
-                            modalDiv.classList.remove('MarginReset');
-                            body.removeChild(Close_modal);
-                        }, false);
-                        
-                        
-                        
-                    };
-                   
-                   sierotki();
-                   closed_modal();
-               }, false);
-            }); 
-        };
         const sierotki = () =>{
           $('.content').each(function() {
                 var tekst = $(this).html();
@@ -230,13 +244,13 @@ var ref = database.ref('Posts');
 
             }, false);
         };   
-
         const appStart = () => {
+            showData();
             postsPage();
             navPage();
-            eventDelegation();
             toggleNav();  
             sierotki();
+      //      openModalFromArticle();
         };
 
         appStart();                   
