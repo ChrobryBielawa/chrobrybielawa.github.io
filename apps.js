@@ -94,17 +94,17 @@ var ref = database.ref('Posts');
                                var author = Posts[k].author;
 
                                modalTitle.innerHTML = title;
-                               modalText.innerHTML = text + '<br><br>' + Stext + '<br><br>' + '<br><i class="rightSideText">' + date + ', ' + author + '</i>';
+                               modalText.innerHTML = text + '<br><br>' + Stext + '<br><br>';
+                               modalText.innerHTML = modalText.innerHTML +  '<br><p class="rightSideText"><i>' + date + ', ' + author + '</i></p>';
 
                             }
                         const closed_modal = () =>{
                             const body = document.querySelector('body');
-                            const closeBtn = document.querySelector('.close-btn');
+                            const closeModal = document.querySelector('.close-modal');
                             const openedModal = document.querySelector('.modal-opened');
                             const Close_modal = document.querySelector('.closeModal');
-
-                            closeBtn.innerHTML = '<i>Zamknij artykuł';
-                            closeBtn.addEventListener('click', function(){
+                            
+                            closeModal.addEventListener('click', function(){
                                 modalDiv.classList.add('hide-modal');
                                 body.classList.remove('modal-opened');
                                 body.classList.remove('overflow-lock')
