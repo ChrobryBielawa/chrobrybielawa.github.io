@@ -6,13 +6,13 @@ body{
 }
 @keyframes toggle{
     from{
-        margin-left:-101%;
+        margin-left:0;
     }to{
-        margin-left:0%;
+        margin-left:100%;
     }
 }
 .toggle-element{
-    margin-left:0 !important;
+    animation:toggle 0.5s;
 }
 .page-body, html{
     margin:0;
@@ -284,6 +284,19 @@ a{
     margin-top:10px;
     margin-bottom:20px;
     color:#303984;
+}
+.test1{
+    width:100%;
+}
+.wrapper{
+    display:flex;
+    justify-content: center;
+}
+.wrapper img{
+    width:300px;
+}
+.zoomed{
+    width:100% !important;
 }
 .ShowBtn{
     padding:20px;

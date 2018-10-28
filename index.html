@@ -3,9 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" type="image/png" href="https://firebasestorage.googleapis.com/v0/b/blog-a94ef.appspot.com/o/Bez%20nazwy-1.png?alt=media&token=8ecd2f43-11c6-4225-96a5-40e4ae5193f4">
         <title>
-            Blog szkolny
+            Blog szkolny - Liceum Ogólnokształcące w Bielawie
         </title>
+        <meta name="description" content="...">
+        <meta name="keywords" content="Blog szkolny, ZSO, Liceum Ogólnokształcące, Bielawa">
 	    <link href='https://fonts.googleapis.com/css?family=Lato|Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="mobile-version.css">
         <link rel="stylesheet" href="desktop-version.css">
@@ -71,7 +74,7 @@
                </h2>
             </section>
         </main>
-        <aside class="modal-div">
+        <aside class="modal-div article-modal">
               <div class="close-modal">
                   <p class="close-text">
                       Naciśnij, aby zamknąć artykuł!
@@ -82,8 +85,28 @@
                       <article class="web-article">
                           <h2 class="article-title modal-title"></h2>
                           <p class="content modal-text"></p>
+                          <p class="rightSideText author_text"></p>
+                          <div class="wrapper">
+                              <figure>
+                                  <img alt="" class="photo_wrap zoom">
+                              </figure>
+                          </div>
                       </article>
                   </section>
+              </div>
+        </aside>
+        <aside class="modal-div photos-modal">
+              <div class="close-modal close-photos">
+                  <p class="close-text">
+                      Naciśnij, aby zamknąć zdjęcie!
+                  </p>
+              </div>
+              <div class="modal test1">
+                  <div class="wrapper">
+                      <figure>
+                          <img alt="" class="photo_wrap zoomed">
+                      </figure>
+                  </div>
               </div>
         </aside>
         <footer class="page-footer">

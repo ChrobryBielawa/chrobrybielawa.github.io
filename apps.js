@@ -9,20 +9,24 @@ var ref = database.ref('Posts');
               console.log(keys);
 
               for(var i = (keys.length-1); i>= 0; i--){
-                  console.log(keys.length);
                   var k = keys[i];
 
                   var title = Posts[k].title;
                   var text = Posts[k].text;
                   var date = Posts[k].date;
                   var author = Posts[k].author;
-
+                  var photo = Posts[k].photo;
+                  
+                  
                   const article = document.createElement('article');
                   const title_of_article = document.createElement('h2');
                   const content = document.createElement('p');
                   const date_added = document.createElement('p');
                   const ShowBtn = document.createElement('span');
                   const author_date = document.createElement('p');
+                  const wrap = document.createElement('div');
+                  const photo_Figure = document.createElement('figure');
+                  const photo_place = document.createElement('img');
 
                   title_of_article.classList.add('article-title');
                   content.classList.add('content');
@@ -30,6 +34,8 @@ var ref = database.ref('Posts');
                   date_added.classList.add('date');
                   ShowBtn.classList.add('ShowBtn');
                   author_date.classList.add('rightSideText');
+                  wrap.classList.add('wrapper');
+                  photo_place.classList.add('zoom');
 
                   section.appendChild(article);
                   article.appendChild(title_of_article);
@@ -37,13 +43,17 @@ var ref = database.ref('Posts');
                   article.appendChild(content);
                   article.appendChild(ShowBtn);
                   article.appendChild(author_date);
-
+                  article.appendChild(wrap);
+                  wrap.appendChild(photo_Figure);
+                  photo_Figure.appendChild(photo_place);
                  
                   title_of_article.innerHTML = title;
                   content.innerHTML = text;
                   ShowBtn.innerHTML = 'Czytaj dalej...';
+                  photo_place.setAttribute('src', photo);
                   
                   ShowBtn.setAttribute('data-num', i);
+                  photo_place.setAttribute('src', photo);
                   
                   author_date.innerHTML = '<i>' + date + ', ' + author + '</i>';
                   
@@ -62,7 +72,59 @@ var ref = database.ref('Posts');
                   
 
               }
-              const eventDelegation = () =>{
+              const zoomPhotos = () =>{
+                  var items = document.querySelectorAll('.zoom');
+                  var nodes = Array.prototype.slice.call(items);
+                  var zoomed = document.querySelector('.zoomed');
+                  var photo_modal = document.querySelector('.photos-modal');
+                  var body = document.querySelector('body');
+                  var close_photos = document.querySelector('.close-photos');
+                  var zoomed = document.querySelector('.zoomed');
+                  var photo_modal = document.querySelector('.photos-modal');
+                  var CloseModal = document.createElement('div');
+                  
+                  
+
+                    nodes.forEach(function(item) {      
+                        item.addEventListener('click', function(){
+                            var item = this.getAttribute('src');
+                            
+                            zoomed.setAttribute('src', item);
+                            
+                            body.classList.add('modal-opened');
+                            body.classList.add('overflow-lock');
+                            photo_modal.classList.add('MarginReset');
+                            CloseModal.classList.add('closeModal');
+                  
+                            body.appendChild(CloseModal);
+                        }, false);
+                    });
+                
+                  close_photos.addEventListener('click', function(){
+                      photo_modal.classList.add('toggle-element');
+                      body.classList.remove('modal-opened');
+                      body.classList.remove('overflow-lock');
+                      photo_modal.classList.remove('MarginReset');
+                      
+                      
+                      
+                      zoomed.removeAttribute('src');
+                      
+                      CloseModal.remove();
+                  }, false);
+                  
+                  CloseModal.addEventListener('click', function(){
+                      photo_modal.classList.add('toggle-element');
+                      body.classList.remove('modal-opened');
+                      body.classList.remove('overflow-lock');
+                      photo_modal.classList.remove('MarginReset');
+                      
+                      zoomed.removeAttribute('src');
+                      
+                      CloseModal.remove();
+                  }, false);
+              };
+              var eventDelegation = () =>{
                   
                 var items = document.querySelectorAll('.ShowBtn, .list a');
                 var nodes = Array.prototype.slice.call(items);
@@ -75,7 +137,9 @@ var ref = database.ref('Posts');
                        const modalText = document.querySelector('.modal-text');
                        const modalTitle = document.querySelector('.modal-title');
                        const CloseModal = document.createElement('div');
-
+                       const photo_wrapper = document.querySelector('.photo_wrap');
+                       const author_text = document.querySelector('.author_text');
+                       
                        CloseModal.classList.add('closeModal');
                        body.classList.add('modal-opened');
                        body.classList.add('overflow-lock')
@@ -92,12 +156,16 @@ var ref = database.ref('Posts');
                                var Stext = Posts[k].Stext;
                                var date = Posts[k].date;
                                var author = Posts[k].author;
-
+                               var photo = Posts[k].photo;
+                                
                                modalTitle.innerHTML = title;
                                modalText.innerHTML = text + '<br><br>' + Stext + '<br><br>';
-                               modalText.innerHTML = modalText.innerHTML +  '<br><p class="rightSideText"><i>' + date + ', ' + author + '</i></p>';
+                               photo_wrapper.setAttribute('src', photo);
+                               author_text.innerHTML = author; 
+                                
 
                             }
+                        
                         const closed_modal = () =>{
                             const body = document.querySelector('body');
                             const closeModal = document.querySelector('.close-modal');
@@ -106,16 +174,24 @@ var ref = database.ref('Posts');
                             
                             closeModal.addEventListener('click', function(){
                                 modalDiv.classList.add('hide-modal');
-                                body.classList.remove('modal-opened');
-                                body.classList.remove('overflow-lock')
+                                
+                                setTimeout(function(){
+                                    body.classList.remove('modal-opened');
+                                    body.classList.remove('overflow-lock');
+                                }, 500);
+
                                 modalDiv.classList.remove('MarginReset');
                                 Close_modal.remove();
                             }, false);
 
                             Close_modal.addEventListener('click', function(){
                                 modalDiv.classList.add('hide-modal');
-                                body.classList.remove('modal-opened');
-                                body.classList.remove('overflow-lock')
+                                
+                                 setTimeout(function(){
+                                    body.classList.remove('modal-opened');
+                                    body.classList.remove('overflow-lock')
+                                }, 500);
+                                
                                 modalDiv.classList.remove('MarginReset');
                                 Close_modal.remove();
                             }, false);
@@ -128,6 +204,7 @@ var ref = database.ref('Posts');
                     }); 
                  };
                 eventDelegation(); 
+                zoomPhotos();
             };
         const postsPage = () => {
             const nextPosts = document.createElement('btn');
