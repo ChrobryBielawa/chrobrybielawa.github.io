@@ -207,8 +207,8 @@ var ref = database.ref('Posts');
                 zoomPhotos();
             };
         const postsPage = () => {
-            const nextPosts = document.createElement('btn');
-            const previousPosts = document.createElement('btn');
+            const nextPosts = document.createElement('button');
+            const previousPosts = document.createElement('button');
             const WrapDiv = document.createElement('div');
             const numPagePost = document.createElement('span');
             
@@ -313,11 +313,11 @@ var ref = database.ref('Posts');
             const btn = document.querySelector('.btn');
 
             btn.addEventListener('click', function() {
-            const nav = document.querySelector('.page-aside');
-            const body = document.querySelector('body');
+                const nav = document.querySelector('.page-aside');
+                const body = document.querySelector('body');
 
-            nav.classList.toggle('toggle-element');
-            body.classList.toggle('overflow-lock');
+                nav.classList.toggle('toggle-nav');
+                body.classList.toggle('overflow-lock');
 
             }, false);
         };   

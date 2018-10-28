@@ -14,6 +14,17 @@ body{
 .toggle-element{
     animation:toggle 0.5s;
 }
+@keyframes toggleNav{
+    from{
+        margin-left:-100%;
+    }to{
+        margin-left:0;
+    }
+}
+.toggle-nav{
+    animation:toggleNav 0.5s;
+    margin-left:0% !important;
+}
 .page-body, html{
     margin:0;
     padding:0;
