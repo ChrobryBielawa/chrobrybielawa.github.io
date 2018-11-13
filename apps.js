@@ -25,8 +25,6 @@ var ref = database.ref('Posts');
                   const ShowBtn = document.createElement('span');
                   const author_date = document.createElement('p');
                   const wrap = document.createElement('div');
-                  const photo_Figure = document.createElement('figure');
-                  const photo_place = document.createElement('img');
 
                   title_of_article.classList.add('article-title');
                   content.classList.add('content');
@@ -35,7 +33,7 @@ var ref = database.ref('Posts');
                   ShowBtn.classList.add('ShowBtn');
                   author_date.classList.add('rightSideText');
                   wrap.classList.add('wrapper');
-                  photo_place.classList.add('zoom');
+                  
 
                   section.appendChild(article);
                   article.appendChild(title_of_article);
@@ -44,16 +42,25 @@ var ref = database.ref('Posts');
                   article.appendChild(ShowBtn);
                   article.appendChild(author_date);
                   article.appendChild(wrap);
-                  wrap.appendChild(photo_Figure);
-                  photo_Figure.appendChild(photo_place);
-                 
+                  
+                  var array = photo.split(",");
+                  for(var a = 0; a<=(array.length-1); a++){
+                      var photo_Figure = document.createElement('figure');
+                      var photo_place = document.createElement('img');
+                      
+                      photo_place.classList.add('zoom');
+                         
+                      wrap.appendChild(photo_Figure);
+                      photo_Figure.appendChild(photo_place);
+                      photo_place.setAttribute('src', array[a]);
+                      
+                  }
+                  
                   title_of_article.innerHTML = title;
                   content.innerHTML = text;
                   ShowBtn.innerHTML = 'Czytaj dalej...';
-                  photo_place.setAttribute('src', photo);
                   
                   ShowBtn.setAttribute('data-num', i);
-                  photo_place.setAttribute('src', photo);
                   
                   author_date.innerHTML = '<i>' + date + ', ' + author + '</i>';
                   
@@ -137,7 +144,7 @@ var ref = database.ref('Posts');
                        const modalText = document.querySelector('.modal-text');
                        const modalTitle = document.querySelector('.modal-title');
                        const CloseModal = document.createElement('div');
-                       const photo_wrapper = document.querySelector('.photo_wrap');
+                       const photo_wrapper = document.querySelector('.photos-wrap');
                        const author_text = document.querySelector('.author_text');
                        
                        CloseModal.classList.add('closeModal');
@@ -163,7 +170,19 @@ var ref = database.ref('Posts');
                                photo_wrapper.setAttribute('src', photo);
                                author_text.innerHTML = author; 
                                 
+                                  var array = photo.split(",");
+                                  for(var a = 0; a<=(array.length-1); a++){
+                                      var photo_Figure = document.createElement('figure');
+                                      var photo_place = document.createElement('img');
 
+                                      photo_place.classList.add('zoom');
+
+                                      photo_wrapper.appendChild(photo_Figure);
+                                      photo_Figure.appendChild(photo_place);
+                                      photo_place.setAttribute('src', array[a]);
+
+                                  }
+                                    
                             }
                         
                         const closed_modal = () =>{
