@@ -167,7 +167,6 @@ var ref = database.ref('Posts');
                                 
                                modalTitle.innerHTML = title;
                                modalText.innerHTML = text + '<br><br>' + Stext + '<br><br>';
-                               photo_wrapper.setAttribute('src', photo);
                                author_text.innerHTML = author; 
                                 
                                   var array = photo.split(",");
@@ -190,9 +189,12 @@ var ref = database.ref('Posts');
                             const closeModal = document.querySelector('.close-modal');
                             const openedModal = document.querySelector('.modal-opened');
                             const Close_modal = document.querySelector('.closeModal');
-                            
+                                                        
                             closeModal.addEventListener('click', function(){
                                 modalDiv.classList.add('hide-modal');
+                                
+                                console.log(document.querySelector('.photos-wrap'));
+                                photo_wrapper.innerHTML = '';
                                 
                                 setTimeout(function(){
                                     body.classList.remove('modal-opened');
@@ -201,10 +203,14 @@ var ref = database.ref('Posts');
 
                                 modalDiv.classList.remove('MarginReset');
                                 Close_modal.remove();
+                                
                             }, false);
 
                             Close_modal.addEventListener('click', function(){
                                 modalDiv.classList.add('hide-modal');
+                                
+                                console.log(document.querySelector('.photos-wrap'));
+                                photo_wrapper.innerHTML = '';
                                 
                                  setTimeout(function(){
                                     body.classList.remove('modal-opened');
